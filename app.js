@@ -18,9 +18,6 @@ const server = app.listen(port, () => {
   console.log(`jQuerius is running at http:localhost:${port}`);
 });
 
-server.keepAliveTimeout = 120 * 1000;
-server.headersTimeout = 120 * 1000;
-
 bot.on("message", async (msg) => {
   const chatId = msg.chat.id;
   const userInput = msg.text.toLowerCase();
