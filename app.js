@@ -10,14 +10,16 @@ const projectsHandler = require("./handlers/projects");
 const contactHandler = require("./handlers/contacts");
 const jokeHandler = require("./handlers/jokes");
 const { defaultReplies } = require("./utils/database");
+const html = require("./utils/html");
 
-app.get("/", (req, res) => {
-  res.send("jQuerius is up!");
-});
+app.get("/", (req, res) => res.type("html").send(html));
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`jQuerius is running at http:localhost:${port}`);
 });
+
+server.keepAliveTimeout = 120 * 1000;
+server.headersTimeout = 120 * 1000;
 
 bot.on("message", async (msg) => {
   const chatId = msg.chat.id;
