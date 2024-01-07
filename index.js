@@ -62,3 +62,5 @@ bot.on("message", async (msg) => {
     );
   }
 });
+
+module.exports = app;
